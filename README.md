@@ -75,15 +75,4 @@ mutation {
 }
 ```
 
-**To view one card**
-```
-query oneCard {
- oneCard (id:1) {
-    id
-    question
-    description
-    answer
-  }
-}
-```
 
