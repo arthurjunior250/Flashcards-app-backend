@@ -67,6 +67,48 @@ export const cardMutation = extendType({
       }
     })
 
+    // upating a card
+    t.nonNull.field('updateCard', {
+      type: "Card",
+      args: {
+        id: nonNull(intArg()),
+        question: nonNull(stringArg()),
+        description: nonNull(stringArg()),
+        answer: nonNull(stringArg())
+
+      },
+      resolve(parent, args, context) {
+        const {question, description, answer, id } = args;
+        const updatedCard = context.prisma.card.update({
+          where: {
+            id
+          },
+          data: {
+            question,
+            description,
+            answer
+          }
+        })
+        return updatedCard
+      }
+    })
+
+    // deleting a card
+    t.nonNull.field('deleteCard', {
+      type: 'Card',
+      args: {
+        id: nonNull(intArg())
+      },
+      resolve(parent, args, context) {
+        const { id } = args;
+        return context.prisma.card.delete({
+          where: {
+            id
+          }
+        })
+      }
+    })
+
   }
 })
 
