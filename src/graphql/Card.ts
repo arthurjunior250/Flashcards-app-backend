@@ -48,16 +48,16 @@ export const cardMutation = extendType({
     t.nonNull.field("createCard", {
       type: "Card",
       args: {
-        id: nonNull(intArg()),
+        // id: nonNull(intArg()),
         question: nonNull(stringArg()),
         description: nonNull(stringArg()),
         answer: nonNull(stringArg())
       },
       resolve(parent, args, context) {
-        const { id,question, description, answer } = args;
+        const {question, description, answer } = args;
         const newCard = context.prisma.card.create({
           data: {
-            id,
+            // id,
             question,
             description,
             answer
