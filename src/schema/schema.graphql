@@ -10,7 +10,9 @@ type Card {
 }
 
 type Mutation {
-  createCard(answer: String!, description: String!, id: Int!, question: String!): Card!
+   createCard(answer: String!, description: String!, question: String!): Card!
+  deleteCard(id: Int!): Card!
+  updateCard(answer: String!, description: String!, id: Int!, question: String!): Card!
 }
 
 type Query {
